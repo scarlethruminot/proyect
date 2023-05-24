@@ -16,6 +16,7 @@ while op_volver==0:
     cantPepe=0
     cantAllcar=0
     print("\n Bienvenido(a) a menú RAPID!")
+    print("\n Bienvenido!")
 
     op_usuario=0
     while(op_usuario==0):
