@@ -1,0 +1,153 @@
+PIZZATRAD=12000
+PIZZAPEPE=14000
+PIZZAALLCAR=17000
+cantTrad=0
+cantPepe=0
+cantAllcar=0
+subTrad=0
+subPepe=0
+subAllcar=0
+alarma=""
+op_volver=0
+
+
+while op_volver==0:
+    cantTrad=0
+    cantPepe=0
+    cantAllcar=0
+    print("\n Bienvenido(a) a menú RAPID!")
+
+    op_usuario=0
+    while(op_usuario==0):
+        print(alarma)
+        tipo_usuario=int(input("\nSi corresponde a: \n 1)Estudiante Diurno\n 2)Estudiante Vespertino\n 3)Administrativo\n\nIngrese la opción a la que corresponda : "))
+
+        if(tipo_usuario != 1 and tipo_usuario != 2 and tipo_usuario != 3):
+          alarma="\n-Debe ingresar una opción válida, vuelva a intentarlo-"
+          op_usuario=0     
+        else:
+          op_usuario=1
+        
+    if tipo_usuario==1:
+        print("\nHa seleccionado el tipo usuario Estudiante diurno, se aplicará un descuento de 12%")
+        descuentoP = 0.12
+        porcDesc="12"
+              
+    if tipo_usuario==2:
+        print("\nHa seleccionado el tipo usuario Estudiante vespertino, se aplicará un descuento de 10%")
+        descuentoP = 0.10
+        porcDesc="10"
+
+    if tipo_usuario==3:
+        print("\nHa seleccionado el tipo usuario Administrativo, no le corresponde de descuento")
+        descuentoP = 1
+        
+
+    opcTpPizza=0
+    while (opcTpPizza==0):
+        evalOpc=0
+        while evalOpc==0:
+            print(alarma)
+            print("\nTipos pizzas\n\n1)Tradicional:$12.000 \n2)Peperoni:$14.000 \n3)All carnes:$17.000\n ")
+
+            tipo_pizza=int(input("Ingrese la opción que desea llevar: "))
+
+            if(tipo_pizza != 1 and tipo_pizza != 2 and tipo_pizza != 3):
+                alarma="\n-Debe ingresar una opción válida, vuelva a intentarlo-"
+                evalOpc=0     
+            else:
+                evalOpc=1
+
+        cant_pizza=int(input("\nIngrese la cantidad que desea llevar: "))
+
+        if(tipo_pizza == 1):
+            subTrad = cant_pizza*PIZZATRAD
+            cantTrad=cantTrad+cant_pizza
+        if(tipo_pizza == 2):
+            subPepe = cant_pizza*PIZZAPEPE
+            cantPepe=cantPepe+cant_pizza
+
+        if(tipo_pizza == 3):
+            subAllcar = cant_pizza*PIZZAALLCAR
+            cantAllcar=cantAllcar+cant_pizza
+
+        agregar_otro=int(input("\n¿Desea agregar otro tipo de pizza? \n1)SI\n2)NO\n "))
+
+        if(agregar_otro == 1):
+            opcTpPizza=0
+        if(agregar_otro == 2):
+            opcTpPizza=1
+    
+    print("\nPizzasDuoc")
+    print("-"*20)
+    if(cantTrad >=1):
+        print("* ",cantTrad," Pizza Tradicional    $",subTrad)
+    if(cantPepe >=1):
+        print("* ",cantPepe," Pizza Peperoni       $",subPepe)
+    if(cantAllcar >=1):
+        print("* ",cantAllcar," Pizza All Carnes   $",subAllcar)
+
+    subTotalpago = subTrad+subAllcar+subPepe
+
+    print("-"*20)
+    print("Sub Total                  $",subTotalpago)
+    if(descuentoP != 1):
+        descuento=subTotalpago*descuentoP
+        print("Descuento ",porcDesc,"%            $",descuento)
+    else:
+        descuento = 0
+    totalApagar = subTotalpago-descuento
+    print("-"*20)
+    print("Total a pagar              $",totalApagar)
+
+    opMedPago = 0
+    while(opMedPago==0):
+        print(alarma)
+        medio_pago=int(input("¿Con que medio de pago cancelará?\n1)Efectivo\n2)Débito\n3)Crédito\n"))
+
+        if(medio_pago != 1 and medio_pago != 2 and medio_pago != 3):
+          alarma="\n-Debe ingresar una opción válida, vuelva a intentarlo-"
+          opMedPago=0     
+        else:
+          opMedPago=1
+
+    if(medio_pago == 1):
+        monto_efectivo=int(input("¿Con cuanto dinero va a pagar? $"))
+        vuelto=monto_efectivo-totalApagar
+        tpPago="Efectivo"
+        flagTpPago=True
+    if(medio_pago == 2):
+        tpPago="Débito"
+        flagTpPago=False
+    if(medio_pago == 3):
+        tpPago="Crédito"
+        flagTpPago=False
+    
+    print("-"*20)
+    print("Forma de pago:               ",tpPago)
+    if(flagTpPago):
+        
+        print("Monto de pago:               $",monto_efectivo)
+        print("Vuelto:                      $",vuelto)
+    else:
+        print("Monto  pagado:               $",totalApagar)
+
+
+    
+    anular=int(input("Desea anular la compra?\n1)Si\n2)No\n"))
+    if anular==1:
+        op_volver=0
+    if anular==2:
+        op_volver=1
+        print("-"*20)
+        print("Gracias por su compra!")
+
+    
+
+
+
+
+
+    
+
+    
